@@ -1,0 +1,41 @@
+name: Release Obsidian plugin
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Build
+        id: build
+        run: |
+          npm install
+          npm run build
+          mkdir -p dist/obsidian-autoname
+          cp main.js manifest.json styles.css dist/obsidian-autoname/
+          echo "tag_name=$(git tag --sort version:refname | tail -n 1)" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" \
+            --title="$TAG" \
+            --generate-notes \
+            dist/obsidian-autoname/main.js \
+            dist/obsidian-autoname/manifest.json \
+            dist/obsidian-autoname/styles.css

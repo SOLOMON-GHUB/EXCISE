@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-autoname",
+  "name": "AutoName",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "粘贴进笔记的附件自动改名为「<笔记名>-图<N>」并同步全库引用；支持自定义命名模板，启用或打开库时补扫历史堆积。与落位类插件分工——它们管放哪，本插件管叫什么。",
+  "author": "SOLOMON",
+  "authorUrl": "https://github.com/SOLOMON-GHUB",
+  "isDesktopOnly": false
+}

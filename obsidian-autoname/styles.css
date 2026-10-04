@@ -1,0 +1,22 @@
+/* AutoName —— 设置面板用到的样式。
+   Obsidian 会自动加载插件根目录下的 styles.css。
+   // [改写] 原插件没有任何样式资源，设置项只能堆默认样式。 */
+
+.autoname-settings__hint {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.autoname-settings__preview {
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+  color: var(--text-accent);
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--input-radius);
+  padding: 6px 10px;
+  margin-top: 6px;
+  word-break: break-all;
+}
